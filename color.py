@@ -40,8 +40,8 @@ class Color(ASMOpenCV):
             parameters=parameters
         )
 
-    def process(self, frame: numpy.ndarray) -> list[ContainerParameterResults]:
-        b, g, r = frame.mean(axis=0)
+    async def process(self, frame: numpy.ndarray) -> list[ContainerParameterResults]:
+        b, g, r = frame.mean(axis=(0, 1))
         return [ContainerParameterResults(parameter=parameters[0], result=r),
                 ContainerParameterResults(parameter=parameters[1], result=g),
                 ContainerParameterResults(parameter=parameters[2], result=b)]
